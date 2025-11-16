@@ -1,0 +1,83 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10; /* Near Black */
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* Use a very dark background for the main body */
+  background: rgb(var(--background-start-rgb));
+}
+
+/* Custom hacker theme (Fuchsia/Pink Gradient) */
+.hacker-gradient {
+  background: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);
+}
+
+.flashcard {
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* Add subtle pink shadow */
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); 
+}
+
+.flashcard-front {
+  background: #1E293B; /* Dark slate background */
+  color: #F9FAFB; /* Light text */
+  border: 2px solid #EC4899; /* Pink border */
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, #EC4899 0%, #D946EF 100%); /* Pink/Purple Gradient for flip */
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.quiz-option {
+  transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+}
+
+.quiz-option.correct {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%); /* Green for success */
+  color: white;
+}
+
+.quiz-option.incorrect {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); /* Red for failure */
+  color: white;
+}
